@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">EscapeRoom</string>
+    <string name="title">Escape Room</string>
+    <string name="dossier">Expediente</string>
+    <string name="challenge1">Reto 1</string>
+    <string name="challenge2">Reto 2</string>
+    <string name="passwordText">Contraseña</string>
+    <string name="checkPass">Comprobar</string>
+    <string name="password1">Afrontamiento18</string>
+    <string name="password2">Comunicación10</string>
+    <string name="urlVideo">"CZQLHzOqhvQ"</string>
+    <string name="cospacesApp">delightex.cospaces.edu</string>
+    <string name="urlCube">https://edu.cospaces.io/XUS-GXK</string>
+    <string name="cubeIconText">Cube</string>
+</resources>
