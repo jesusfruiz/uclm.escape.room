@@ -7,5 +7,6 @@
     <dimen name="button_height">128dp</dimen>
     <dimen name="button_width">128dp</dimen>
     <dimen name="textfield_height">64dp</dimen>
-
+    <dimen name="largeFontSize">40sp</dimen>
+    <dimen name="middleFontSize">32sp</dimen>
 </resources>

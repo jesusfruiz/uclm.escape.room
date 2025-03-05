@@ -59,7 +59,7 @@ fun Chalenge1Preview() {
             onCubeButtonPressed = {},
             userInput = "",
             errorInPass = false,
-            state = EscapeRoomState("", "", false, false),
+            state = EscapeRoomState("", "", "", false),
             modifier = Modifier,
         )
     }

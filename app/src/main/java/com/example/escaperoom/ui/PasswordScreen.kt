@@ -51,16 +51,6 @@ fun PasswordScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        if(errorInPass) {
-            Log.d("Password", "Ha habido un error en la contraseña")
-        } else {
-            Log.d("Password", "Pues nada")
-        }
-        if(state.pass1Correct) {
-            Log.d("Password", "Contraseña correcta")
-        } else {
-            Log.d("Password", "Contraseña no correcta")
-        }
         OutlinedTextField(
             value = userInput,
             onValueChange = onValueChange,
@@ -72,6 +62,12 @@ fun PasswordScreen(
             isError = errorInPass,
             modifier = Modifier.fillMaxWidth().height(dimensionResource(R.dimen.textfield_height)),
         )
+
+        if(errorInPass) {
+            Spacer(Modifier.size(dimensionResource(R.dimen.large_padding)))
+            Text(stringResource(R.string.badPassword),
+                color = Color.Red)
+        }
 
         Spacer(Modifier.size(dimensionResource(R.dimen.large_padding)))
 
@@ -102,7 +98,7 @@ fun GreetingPreview() {
             onClick = {},
             userInput = "",
             errorInPass = false,
-            state = EscapeRoomState("", "", false, false),
+            state = EscapeRoomState("", "", "", false),
             modifier = Modifier,
         )
     }

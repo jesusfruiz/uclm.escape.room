@@ -20,6 +20,9 @@ import androidx.compose.ui.unit.dp
 import com.example.escaperoom.EscapeRoomApp
 import com.example.escaperoom.R
 import com.example.escaperoom.ui.ImageButton
+import com.example.escaperoom.ui.TimerScreen
+import com.example.escaperoom.ui.TimerScreenContent
+import com.example.escaperoom.ui.TimerViewModel
 
 
 @Composable
@@ -27,6 +30,8 @@ fun StartScreen(
     onDossierButton: () -> Unit,
     onChallenge1Button: () -> Unit,
     onChallenge2Button: () -> Unit,
+    onChallenge3Button: () -> Unit,
+    timer: Int,
     modifier: Modifier = Modifier) {
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -35,28 +40,40 @@ fun StartScreen(
         ) {
 
         Row (
-            modifier = Modifier.weight(1f),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier.fillMaxWidth().weight(1f),
+        ){
+            TimerScreen(
+                timer
+            )
+        }
+
+        Row (
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier.fillMaxWidth().weight(1f),
         ){
             ImageButton(
                 onClick = onDossierButton,
                 image = R.drawable.expediente,
                 description = R.string.dossier,
-                modifier = Modifier.align(Alignment.CenterVertically)
+                modifier = Modifier
             )
+
+            ImageButton(
+                onClick = onChallenge1Button,
+                image = R.drawable.challenge_removebg_preview,
+                description = R.string.challenge1,
+                modifier = Modifier
+            )
+
         }
 
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier.fillMaxWidth().weight(1f)
         ) {
-            ImageButton(
-                onClick = onChallenge1Button,
-                image = R.drawable.challenge_removebg_preview,
-                description = R.string.challenge1,
-                modifier = Modifier
-
-            )
-
 
             ImageButton(
                 onClick = onChallenge2Button,
@@ -64,16 +81,23 @@ fun StartScreen(
                 description = R.string.challenge2,
                 modifier = Modifier
             )
+
+            ImageButton(
+                onClick = onChallenge3Button,
+                image = R.drawable.challenge_removebg_preview,
+                description = R.string.challenge3,
+                modifier = Modifier
+            )
         }
     }
 }
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     EscapeRoomTheme() {
         StartScreen(
-            {}, {}, {}
+            {}, {}, {}, {}, {}
         )
     }
-}
+}*/

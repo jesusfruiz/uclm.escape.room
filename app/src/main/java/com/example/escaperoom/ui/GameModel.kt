@@ -14,6 +14,14 @@ import java.text.Normalizer
 
 private const val PASSWORD1 = "Afrontamiento18"
 private const val PASSWORD2 = "Comunicacion10"
+private const val PASSWORD3 = "Depresion5"
+
+private val SYMPTONS = listOf(
+    "Depresión del sistema nervioso central",
+    "Hipoventilación",
+    "Somnolencia",
+    "Broncoconstricción"
+)
 
 class GameModel: ViewModel() {
     private val _uiState = MutableStateFlow(EscapeRoomState())
@@ -31,6 +39,14 @@ class GameModel: ViewModel() {
         _uiState.update { currentState->
             currentState.copy(
                 inputPass2 = password2,
+            )
+        }
+    }
+
+    fun setPassword3(password3: String) {
+        _uiState.update { currentState->
+            currentState.copy(
+                inputPass3 = password3,
             )
         }
     }
@@ -75,6 +91,72 @@ class GameModel: ViewModel() {
                 )
             }
         }
+    }
+
+    fun checkPassword3() {
+        val passIsCorrect: Boolean = checkPassword(_uiState.value.inputPass3, PASSWORD3)
+
+        if(passIsCorrect) {
+            _uiState.update { currentState->
+                currentState.copy(
+                    inputPass3 = "",
+                    pass3Correct = true,
+                    errorInPass3 = false
+                )
+            }
+        } else {
+            _uiState.update { currentState->
+                currentState.copy(
+                    inputPass3 = "",
+                    errorInPass3 = true
+                )
+            }
+        }
+    }
+
+    fun switchErrorInSymptons() {
+        _uiState.update { currentState->
+            currentState.copy(
+                errorInSymptons = true,
+            )
+        }
+    }
+
+    fun checkSymptons() {
+        var symptonsCorrect = 0
+        for (sympton in _uiState.value.symptonsList) {
+            if(SYMPTONS.contains(sympton)) {
+                symptonsCorrect++
+            } else {
+                _uiState.update { currentState->
+                    currentState.copy(
+                        symptonsAreCorrect = false
+                    )
+                }
+            }
+        }
+
+        if (symptonsCorrect == SYMPTONS.size) {
+            _uiState.update { currentState->
+                currentState.copy(
+                    symptonsAreCorrect = true
+                )
+            }
+        }
+    }
+
+    fun onToggleSympton(choice: String) {
+        if(_uiState.value.symptonsList.contains(choice)) {
+            _uiState.value.symptonsList.removeAt(
+                _uiState.value.symptonsList.indexOf(choice)
+            )
+        } else {
+            _uiState.value.symptonsList.add(choice)
+        }
+    }
+
+    fun symptonToggled(choice: String): Boolean {
+        return _uiState.value.symptonsList.contains(choice)
     }
 
     private fun checkPassword(inText: String, password: String): Boolean {
