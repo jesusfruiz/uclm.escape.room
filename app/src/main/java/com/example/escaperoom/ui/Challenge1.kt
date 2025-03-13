@@ -2,6 +2,7 @@ package com.example.escaperoom.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -21,6 +22,7 @@ fun Challenge1Screen(
     onPassUpdate: (String) -> Unit,
     onPassButtonPressed: () -> Unit,
     onCubeButtonPressed: () -> Unit,
+    onHintButtonPressed: () -> Unit,
     userInput: String,
     errorInPass: Boolean,
     state: EscapeRoomState,
@@ -31,12 +33,26 @@ fun Challenge1Screen(
         modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()),
     ) {
 
-        ImageButton(
-            onClick = onCubeButtonPressed,
-            image = R.drawable.cube_10019,
-            description = R.string.cubeIconText,
-            modifier = Modifier
-        )
+        Row(
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier.fillMaxSize()
+        ) {
+
+            ImageButton(
+                onClick = onCubeButtonPressed,
+                image = R.drawable.cube_10019,
+                description = R.string.cubeIconText,
+                modifier = Modifier
+            )
+
+            ImageButton(
+                onClick = onHintButtonPressed,
+                image = R.drawable.hint_icon,
+                description = R.string.hintText,
+                modifier = Modifier
+            )
+        }
+
 
         PasswordScreen(
             onValueChange = onPassUpdate,
@@ -57,6 +73,7 @@ fun Chalenge1Preview() {
             onPassUpdate = {},
             onPassButtonPressed = {},
             onCubeButtonPressed = {},
+            onHintButtonPressed = {},
             userInput = "",
             errorInPass = false,
             state = EscapeRoomState("", "", "", false),

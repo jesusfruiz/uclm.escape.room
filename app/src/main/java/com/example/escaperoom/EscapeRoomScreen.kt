@@ -65,6 +65,7 @@ enum class EscapeRoomScreen() {
     Challenge3,
     Challenge3Solution,
     VideoPlayer,
+    HintPlayer
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -163,6 +164,10 @@ fun EscapeRoomApp(
                             url = url,
                             packageName = codeSpaceApp,
                         )
+                    },
+                    onHintButtonPressed = {
+                        navController.navigate(EscapeRoomScreen.HintPlayer.name)
+                        viewModel.resetState()
                     },
                     userInput = uiState.inputPass1,
                     errorInPass = uiState.errorInPass1,
@@ -294,6 +299,13 @@ fun EscapeRoomApp(
             composable(route = EscapeRoomScreen.VideoPlayer.name) {
                 YouTubePlayer(
                     videoId = stringResource(R.string.urlVideo),
+                    modifier = Modifier.fillMaxSize().padding(dimensionResource(R.dimen.small_padding))
+                )
+            }
+
+            composable(route = EscapeRoomScreen.HintPlayer.name) {
+                YouTubePlayer(
+                    videoId = stringResource(R.string.videoHintId),
                     modifier = Modifier.fillMaxSize().padding(dimensionResource(R.dimen.small_padding))
                 )
             }

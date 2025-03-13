@@ -14,6 +14,8 @@
     <string name="cospacesApp">delightex.cospaces.edu</string>
     <string name="urlCube">https://edu.cospaces.io/RFA-BWV</string>
     <string name="cubeIconText">Cube</string>
+    <string name="hintText"> </string>
+    <string name="videoHintId">f_vXFOWBkRs</string>
     <string name="issue1QuestionTitle">Cuestión 1</string>
     <string name="issue1Question">En el caso de Francisca me pareció de vital importancia
         definir las estrategias de afrontamiento utilizadas en su día a día. Recuerdo que estas
