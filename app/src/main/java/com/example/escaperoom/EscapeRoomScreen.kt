@@ -26,6 +26,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -33,7 +34,10 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -229,15 +233,42 @@ fun EscapeRoomApp(
             }
 
             composable(route = EscapeRoomScreen.Challenge1.name) {
+                val issue1 = stringResource(R.string.issue1Choices)
+                val issue2 = stringResource(R.string.issue2Choices)
+
+                val issue1Red = buildAnnotatedString {
+                    issue1.forEach { char ->
+                        if (char.isUpperCase()) {
+                            withStyle(style = SpanStyle(color = Color.Red)) {
+                                append(char.toString()) // Aplica color a mayúsculas
+                            }
+                        } else {
+                            append(char.toString()) // Agrega minúsculas sin cambios
+                        }
+                    }
+                }
+
+                val issue2Red = buildAnnotatedString {
+                    issue2.forEach { char ->
+                        if (char.isUpperCase()) {
+                            withStyle(style = SpanStyle(color = Color.Red)) {
+                                append(char.toString()) // Aplica color a mayúsculas
+                            }
+                        } else {
+                            append(char.toString()) // Agrega minúsculas sin cambios
+                        }
+                    }
+                }
+
                 var question1 = Question(
                     stringResource(R.string.issue1QuestionTitle),
                     stringResource(R.string.issue1Question),
-                    stringResource(R.string.issue1Choices)
+                    issue1Red
                 )
                 var question2 = Question(
                     stringResource(R.string.issue2QuestionTitle),
                     stringResource(R.string.issue2Question),
-                    stringResource(R.string.issue2Choices)
+                    issue2Red
                 )
 
                 ChallengeScreen(
@@ -247,10 +278,24 @@ fun EscapeRoomApp(
             }
 
             composable(route = EscapeRoomScreen.Challenge2.name) {
+                val issue3 = stringResource(R.string.issue3Choices)
+
+                val issue3Red = buildAnnotatedString {
+                    issue3.forEach { char ->
+                        if (char.isUpperCase()) {
+                            withStyle(style = SpanStyle(color = Color.Red)) {
+                                append(char.toString()) // Aplica color a mayúsculas
+                            }
+                        } else {
+                            append(char.toString()) // Agrega minúsculas sin cambios
+                        }
+                    }
+                }
+
                 var question3 = Question(
                     stringResource(R.string.issue3QuestionTitle),
                     stringResource(R.string.issue3Question),
-                    stringResource(R.string.issue3Choices)
+                    issue3Red
                 )
 
                 ChallengeScreen(question3)

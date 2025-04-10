@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EscapeRoom</string>
+    <string name="app_name">Caso Clínico</string>
     <string name="title">Escape Room</string>
     <string name="dossier">Expediente</string>
     <string name="challenge1">Objetivo 1</string>
@@ -31,7 +31,7 @@
     <string name="issue3Question">En base a los datos obtenidos de Francisca estoy trabajando
         para extraer cuál es su estilo de comunicación. Tengo que revisar toda la información
         del caso ya que de momento dudo entre tres estilos\n</string>
-    <string name="issue3Choices">Asertivo\nAgresivo\nInhibido</string>
+    <string name="issue3Choices">Asertivo\naGresivo\nInhibido</string>
     <string name="issue4QuestionTitle">Cuestión 4</string>
     <string name="issue4Question">El conjunto de medicamentos apropiados para el caso de la paciente
         pueden desembocar en varios efectos secundarios. Es importante reconocerlos con el fin
@@ -46,7 +46,7 @@
         <item>Disminución del tabaquismo</item>
         <item>Somnolencia</item>
     </string-array>
-    <string name="issue4Solution">El código de para la Cuestión 4 es 23</string>
+    <string name="issue4Solution">El código para la Cuestión 4 es el 23</string>
     <string name="badPassword">Error. Contraseña incorrecta</string>
     <string name="badSelection">Error. Elementos seleccionados incorrectos</string>
 

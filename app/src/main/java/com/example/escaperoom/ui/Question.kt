@@ -1,3 +1,5 @@
 package com.example.escaperoom.ui
 
-data class Question(val title: String, val content: String, val choices: String)
+import androidx.compose.ui.text.AnnotatedString
+
+data class Question(val title: String, val content: String, val choices: AnnotatedString)
