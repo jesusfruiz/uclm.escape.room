@@ -53,7 +53,6 @@ fun Challenge1Screen(
             )
         }
 
-
         PasswordScreen(
             onValueChange = onPassUpdate,
             onClick = onPassButtonPressed,

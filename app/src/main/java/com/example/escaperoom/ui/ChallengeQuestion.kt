@@ -31,7 +31,9 @@ fun ChallengeScreen(
 ) {
     Column(
         modifier = Modifier
-            .padding(dimensionResource(R.dimen.medium_padding)).fillMaxHeight(),
+            .padding(dimensionResource(R.dimen.medium_padding)).fillMaxHeight().verticalScroll(
+                rememberScrollState()
+            ),
         verticalArrangement = Arrangement.Center
     ){
     for (q in questions) {
